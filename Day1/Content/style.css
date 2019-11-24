@@ -1,0 +1,37 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+}
+.header{
+    background-image: linear-gradient(#86e3ce,#d0e6a5);
+    height: 15vh;
+    padding: 55px;
+    font-size: 30px;
+    font-family: montserrat;
+}
+.container{
+    display: flex;
+    height: 40vh;
+}
+.side{
+    background-image: linear-gradient(#ffdd94,#f3acb6);
+    flex: 1;
+    padding: 35px;
+    font-size: 30px;
+    font-family: montserrat;
+}
+.content{
+    background-image: linear-gradient(#ffbd71,#fe90af);
+    flex: 3;
+    padding: 35px;
+    font-size: 30px;
+    font-family: montserrat;
+}
+.footer{
+    background-image: linear-gradient(#ccabd8, #86e3ca);
+    height: 15vh;
+    padding: 55px;
+    font-size: 30px;
+    font-family: montserrat;
+}
