@@ -80,7 +80,7 @@ class Home extends Component {
         }
 
         
-        if(newactivity&&newstatus&&newdate){
+        if(newactivity&&newdate){
             data[indexedit].activity=newactivity
             data[indexedit].status=newstatus
             data[indexedit].date=newdate
