@@ -90,8 +90,10 @@ li {
 .get-started {
   border: 2px solid #ec0041;
   border-radius: 20px;
-  width: 110px;
-  padding: 15px 25px ;
+  width: 170px;
+  height: 50px;
+  padding-top: 2px;
+  padding-left: 30px;
  
   
 }
@@ -152,7 +154,7 @@ li {
 }
 
 .imgOne > img {
-  width: 750px;
+  width: 760px;
   padding-top: 100px;
 }
 
@@ -165,11 +167,13 @@ li {
 .imgFour > img {
   width: 300px;
   padding-top: 60px;
-  padding-left: 40px;
+  padding-left: 20px;
 }
 
 .imgMiddle {
   position: absolute;
+  margin-left: -75px;
+
 }
 
 .imgOne {
@@ -205,7 +209,7 @@ li {
 .bodyDua {
   margin-top: 350px;
   margin-bottom: 180px;
-  margin-left: 100px;
+  margin-left: 90px;
   margin-right: 100px;
 
   display: flex;
@@ -245,8 +249,8 @@ li {
 /* Start Body Tiga */
 
 .bodyTiga {
-  margin-left: 100px;
-  margin-bottom: 90px;
+  margin-left: 40px;
+  margin-bottom: 60px;
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -276,7 +280,7 @@ li {
 .tigaKiri > h3 {
   
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
-  font-size: 55px;
+  font-size: 40px;
   padding-top: 20px;
   font-weight: 600;
   line-height: 55px;
@@ -285,7 +289,7 @@ li {
 .tigaKiri > p {
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
   padding-top: 20px;
-  font-size: 21px;
+  font-size: 15px;
   text-align: left;
   line-height: 1.8;
   font-weight: 100;
@@ -300,7 +304,7 @@ li {
 
 
 .bodyEmpat {
-  margin-left: 100px;
+  margin-left: 60px;
   margin-bottom: 90px;
   display: flex;
   flex-flow: row;
@@ -309,7 +313,7 @@ li {
 
 .empatKiri {
   transform: translate(-30%);
-  padding-right: 50px;
+  padding-right: 12px;
 }
 
 .empatKiri > img {
@@ -336,7 +340,7 @@ li {
 .empatKanan > h3 {
   
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
-  font-size: 55px;
+  font-size: 45px;
   padding-top: 20px;
   font-weight: 600;
   line-height: 55px;
@@ -345,7 +349,7 @@ li {
 .empatKanan > p {
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
   padding-top: 20px;
-  font-size: 21px;
+  font-size: 15px;
   text-align: left;
   line-height: 1.8;
   font-weight: 100;
@@ -356,8 +360,8 @@ li {
 /* Start Body Lima */
 
 .bodyLima {
-  margin-left: 100px;
-  margin-bottom: 90px;
+  margin-left: 40px;
+  margin-bottom: 60px;
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -387,7 +391,7 @@ li {
 .limaKiri > h3 {
   
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
-  font-size: 55px;
+  font-size: 45px;
   padding-top: 20px;
   font-weight: 600;
   line-height: 55px;
@@ -396,7 +400,7 @@ li {
 .limaKiri > p {
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
   padding-top: 20px;
-  font-size: 21px;
+  font-size: 15px;
   text-align: left;
   line-height: 1.8;
   font-weight: 100;
@@ -409,7 +413,7 @@ li {
 
 
 .bodyEnam {
-  margin-left: 100px;
+  margin-left: 40px;
   margin-bottom: 120px;
   display: flex;
   flex-flow: row;
@@ -445,7 +449,7 @@ li {
 .enamKanan > h3 {
   
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
-  font-size: 55px;
+  font-size: 45px;
   padding-top: 20px;
   font-weight: 600;
   line-height: 55px;
@@ -454,7 +458,7 @@ li {
 .enamKanan > p {
   font-family: Overpass,Trebuchet MS,Arial,sans-serif;
   padding-top: 20px;
-  font-size: 21px;
+  font-size: 15px;
   text-align: left;
   line-height: 1.8;
   font-weight: 100;
@@ -465,6 +469,7 @@ li {
 /* Ending Footer */
 .elemen {
   background-image: url(./img/footerimg.svg);
+  background-position: 50% 50%;
   background-size: cover;
   height: 420px;
   text-align: center;
@@ -499,10 +504,9 @@ li {
   font-size: 15px;
 }
 .logobawah > img {
-  padding-top: 17px;
-  padding-left: 0px;
-  padding-right: 80px;
-  width : 115px;
+  padding-top: 22px;
+  padding-right: 15px;
+  width : 117px;
 }
 .copyright {
   padding-top: 30px;

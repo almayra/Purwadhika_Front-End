@@ -14,9 +14,9 @@ class App extends React.Component{
         <section className='section1'>
           <Header/>
           <Switch>
-            <Route exact path='/' component={Homepage}></Route>
-            <Route path='/about' component={About}></Route>
-            <Route path='/*' component={Gaketemu}></Route>
+              <Route exact path='/' component={Homepage}></Route>
+              <Route path='/about' component={About}></Route>
+              <Route path='/*' component={Gaketemu}></Route>
           </Switch>
         </section>
       </div>
