@@ -60,7 +60,8 @@ class Home extends Component {
             this.setState({data:newdata,isopen:false})
             MySwal.fire(
                 'Success',
-                'Your data have been added'
+                'Your data have been added',
+                'success'
             )
         }
     }
@@ -71,7 +72,6 @@ class Home extends Component {
         var newdate=this.refs.newdate.value
         var data=this.state.data
         var {indexedit}=this.state
-        var editstatus=0
 
         if(this.refs.newstatus.value==='true'){
             newstatus=true
@@ -103,12 +103,6 @@ class Home extends Component {
                 'You have not enter the new activity',
                 'warning'
             )
-        }else if(newstatus===''){
-            MySwal.fire(
-                'Warning',
-                'You have not chosen the status',
-                'warning'
-            )
         }else if(newdate===''){
             MySwal.fire(
                 'Warning',
@@ -121,7 +115,7 @@ class Home extends Component {
         MySwal.fire({
             title: 'Delete '+this.state.data[index].activity+'?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'question',
             showCancelButton: true,
             confirmButtonText: 'Yes, I dont care',
             cancelButtonText: 'No, cancel!',

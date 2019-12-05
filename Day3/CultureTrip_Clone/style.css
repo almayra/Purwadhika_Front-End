@@ -1,0 +1,14 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'ProximaNova-Bold', Arial, Helvetica, sans-serif;
+}
+/* header start  */
+.header-container{
+    font-size: 14px;
+    background-image: url(https://joannarahier.com/italy-wanderlust/);
+    background-position: 50% 50%;
+}
+/* header end  */
