@@ -1,38 +1,73 @@
+*{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .App {
   text-align: center;
+  background-color: #4a4d50;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.hovereffect {
+  width:100%;
+  height:100%;
+  float:left;
+  overflow:hidden;
+  position:relative;
+  text-align:center;
+  cursor:default;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .gambaar1 :hover{
+    transform: scale(1.1);
+    border-radius: 10px;
+    overflow: hidden;
   }
-  to {
-    transform: rotate(360deg);
+  .kartu{
+    border-radius: 10px;
+    overflow: hidden;
   }
-}
+  .gambar{
+    transition: 700ms;
+  }
+  .gambaar1{
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .trailer{
+    background-color: transparent;
+    height: 500px;
+    padding: 0;
+  }
+  .btn-order{
+    width: 43px;
+    height: 40px;
+    background-color: whitesmoke;
+    color: #5b0008;
+    border:1 px solid #5b0008;
+    transition: 200ms;
+  }
+  .btn-order :focus{
+    outline-color: #5b0008;
+  }
+  .btn-order .hover{
+    font-weight: bolder;
+  }
+  .btn-disable{
+    width: 43px;
+    height: 40px;
+    background-color: whitesmoke;
+    color: #5b0008;
+    border: 1px solid;
+  }
+  .btn-pilih{
+    color:whitesmoke;
+    background-color: #5b0008;
+    border: 1px solid whitesmoke;
+    width: 43px;
+    height: 40px;
+  }
+  .layar{
+    background-color: black;
+    color: white;
+  }
+  .center{
+    height: 85vh;
+  }
+  
