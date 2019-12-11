@@ -9,9 +9,10 @@ import {
   NavLink,
   UncontrolledDropdown,
   DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
+
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,32 +22,31 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/" style={{fontWeight:'bold'}}>Milo-vies🤍</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/components/" className='mt-2 mr-3'>History</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavLink href="https://github.com/reactstrap/reactstrap" className='mt-2 mr-3'>Payment</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
+            <UncontrolledDropdown className='mt-2' nav inNavbar>
+              {props.Authname===''?(
+                <DropdownToggle>
+                <Link to={'/login'} style={{color:'white', textDecoration:'none', fontFamily:'Lucida Sans'}}>
+                Login
+                </Link>
               </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
+              ):null}
+              {props.Authname===''?null : <DropdownToggle>{props.Authname}</DropdownToggle> }
+
+              {/* <DropdownToggle>
+                <Link to={'/login'} style={{color:'white', textDecoration:'none', fontFamily:'Lucida Sans'}}>
+                Login
+                </Link>
+              </DropdownToggle> */}
             </UncontrolledDropdown>
           </Nav>
         </Collapse>
@@ -55,4 +55,10 @@ const Header = (props) => {
   );
 }
 
-export default Header;
+const MapStateToProps=state=>{
+  return{
+    Authname: state.Auth.username
+  }
+}
+
+export default connect(MapStateToProps) (Header);
