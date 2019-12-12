@@ -47,6 +47,7 @@
     outline-color: #5b0008;
   }
   .btn-order .hover{
+    color: pink;
     font-weight: bolder;
   }
   .btn-disable{

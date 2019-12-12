@@ -7,9 +7,10 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import Reducers from './redux/reducer'
-import {createStore} from 'redux'
+import {createStore,applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
 
-const store=createStore(Reducers)
+const store=createStore(Reducers,{},applyMiddleware(thunk))
 
 ReactDOM.render(
     <Provider store={store}>

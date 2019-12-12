@@ -3,7 +3,7 @@ import {Link,Redirect} from 'react-router-dom'
 import Axios from 'axios'
 import {APIURL} from '../support/ApiURL'
 import {connect} from 'react-redux'
-import {LoginSuccessAction} from './../redux/action'
+import {LoginSuccessAction,Loginthunk,Login_error} from './../redux/action'
 import Loader from 'react-loader-spinner'
 
 class Login extends Component{
@@ -15,19 +15,20 @@ class Login extends Component{
     onLoginClick=()=>{
         var username=this.refs.username.value 
         var password=this.refs.password.value
-        Axios.get(`${APIURL}users?username=${username}&password=${password}`)
-        .then(res=>{
-            if(res.data.length){
-                localStorage.setItem('aya',res.data[0].id)
-                this.props.LoginSuccessAction(res.data[0])
-            }else{
-                this.setState({error:'Password is incorrect'})
-            }
-            this.setState({loading:false})
-        }).catch((err)=>{
-            console.log(err)
-            this.setState({loading:true})
-        })
+        this.props.Loginthunk(username,password)
+        // Axios.get(`${APIURL}users?username=${username}&password=${password}`)
+        // .then(res=>{
+        //     if(res.data.length){
+        //         localStorage.setItem('aya',res.data[0].id)
+        //         this.props.LoginSuccessAction(res.data[0])
+        //     }else{
+        //         this.setState({error:'Password is incorrect'})
+        //     }
+        //     this.setState({loading:false})
+        // }).catch((err)=>{
+        //     console.log(err)
+        //     this.setState({loading:true})
+        // })
     }
     
     render() {
@@ -55,20 +56,21 @@ class Login extends Component{
                         <input type="checkbox" className="custom-control-input" id="customCheck1" />
                     </div>
                 </div>
-                {this.state.error===''?
+                {this.props.Auth.error===''?
                     null
                     :
                     <div className='alert alert-danger mt-2'>
-                        {this.state.error}<span onClick={()=>this.setState({error:''})} className='float-right font-weight-bold' >X</span>
+                        {this.props.Auth.error}<span onClick={this.props.Login_error} className='float-right font-weight-bold' >X</span>
                     </div>
                 }
                 <div className='mt-4'>
-                    {this.state.loading?
+                    {this.props.Auth.loading?
                     <Loader
-                        type="puff"
+                        type="hearts"
                         color="black"
                         height={100}
                         width={100}
+                        timeout={9000}
                     />
                     :
                     <button className='btn btn-primary' onClick={this.onLoginClick}>Login</button>
@@ -87,8 +89,9 @@ class Login extends Component{
 const MapStateToProps=(state)=>{
     return{
         Authlog:state.Auth.login,
-        AuthId:state.Auth.id
+        AuthId:state.Auth.id,
+        Auth:state.Auth
     }
 }
 
-export default connect(MapStateToProps,{LoginSuccessAction})(Login)
+export default connect(MapStateToProps,{LoginSuccessAction,Loginthunk,Login_error})(Login)

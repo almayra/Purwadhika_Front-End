@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { APIURL } from '../support/ApiURL'
-import { fontFamily } from '@material-ui/system'
 import { Modal,ModalBody,ModalFooter } from 'reactstrap'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -56,35 +55,19 @@ class MovieDetail extends Component {
                         <button onClick={()=>this.setState({kelogin:true})} className='btn btn-primary'>Okay</button>
                     </ModalFooter>
                 </Modal>
-                <div className="row p-3 mx-3 my-6">
-                    <div className="col-md-5">
-                        <img src={this.state.datadetailfim.image} height='500' alt='film' />
-                        <div className='mt-3' style={{fontSize:'30px', fontFamily}}>
-                            {this.state.datadetailfim.title}
-                        </div>
-                    </div>
-                    <div className="col-md-2">
-                        <div className='mt-1'>
-                            title: &nbsp;
-                        </div>
-                    </div>
-                    <div className='mt-1'>
-                        sinopsis &nbsp;
-                    </div>
-                    <div className="col-md-5">
-                        <div className="mt-1">
-                            {this.state.datadetailfim.title}
-                        </div>
-                        <div className="mt-1">
-                            {this.state.datadetailfim.sinopsis}
-                        </div>
-                        <div className="mt-3">
+                <div className='row' style={{height:'92vh'}}>
+                    <div class="card text-white bg-secondary mr-auto" style={{width:'50rem'}}>
+                        <div class="card-body" style={{height:'92vh'}}>
+                            <h5 class="card-title"> {this.state.datadetailfim.title} </h5>
+                            <h6 class="card-subtitle mb-2 text-muted"> {this.state.datadetailfim.sutradara} </h6>
+                            <p class="card-text"> {this.state.datadetailfim.sinopsis} </p>
                             <button className='mt-3 mr-4 btn btn-primary' onClick={this.onBeliTicketClick} >Get Ticket</button>
                             <button className='mt-3 btn btn-dark' onClick={()=>this.setState({traileropen:true})} >Trailer</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            <div/>
+        </div>
         )
     }
 }

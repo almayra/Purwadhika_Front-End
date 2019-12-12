@@ -1,30 +1,249 @@
 {
-    "users":[
-        {
-            "id" : 1,
-            "username" : "admin",
-            "password" : "gatau"
-        },
-        {
-            "id" : 2,
-            "username" : "dobleh",
-            "password" : "qwe"
-        },
-        {
-            "id" : 3,
-            "username" : "jamal",
-            "password" : "asd"
-        }
-    ],
-    "movies":[
-        {
-            "id":1,
-            "title":"Jumanji: The Next Level",
-            "sutradara":"Jake Kasdan",
-            "sinopsis":"Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
-            "image":"https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_405x594.jpg",
-            "genre":"Action",
-            "produksi":"Columbia Pictures"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "gatau",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "aya",
+      "password": "aya",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "username": "rere",
+      "password": "rere",
+      "role": "user"
+    }
+  ],
+  "studios": [
+    {
+      "id": 1,
+      "nama": "Studio 1",
+      "jumlahKursi": 260
+    },
+    {
+      "id": 2,
+      "nama": "Studio 2",
+      "jumlahKursi": 240
+    },
+    {
+      "id": 3,
+      "nama": "Studio 3",
+      "jumlahKursi": 200
+    }
+  ],
+  "movies": [
+    {
+      "title": "The Matrix",
+      "image": "https://i.pinimg.com/564x/6f/4f/ae/6f4fae0a140cae3dbf60795a6c930466.jpg",
+      "sinopsis": "Neo (Keanu Reeves) believes that Morpheus (Laurence Fishburne), an elusive figure considered to be the most dangerous man alive, can answer his question -- What is the Matrix? Neo is contacted by Trinity (Carrie-Anne Moss), a beautiful stranger who leads him into an underworld where he meets Morpheus. They fight a brutal battle for their lives against a cadre of viciously intelligent secret agents. It is a truth that could cost Neo something more precious than his life.",
+      "sutradara": "The Wachowskis",
+      "genre": "Sci-fi",
+      "durasi": "124",
+      "trailer": "https://www.youtube.com/embed/m8e-FF8MsqU",
+      "studioId": "1",
+      "jadwal": [
+        12,
+        16
+      ],
+      "id": 1
+    },
+    {
+      "title": "Star Wars",
+      "image": "https://i.pinimg.com/564x/a4/91/9a/a4919a9227f9c23ede54b776c8f43800.jpg",
+      "sinopsis": "The Imperial Forces -- under orders from cruel Darth Vader (David Prowse) -- hold Princess Leia (Carrie Fisher) hostage, in their efforts to quell the rebellion against the Galactic Empire. Luke Skywalker (Mark Hamill) and Han Solo (Harrison Ford), captain of the Millennium Falcon, work together with the companionable droid duo R2-D2 (Kenny Baker) and C-3PO (Anthony Daniels) to rescue the beautiful princess, help the Rebel Alliance, and restore freedom and justice to the Galaxy.",
+      "sutradara": "J.J. Abrams",
+      "genre": "Sci-fi",
+      "durasi": "123",
+      "trailer": "https://www.youtube.com/embed/P94M4jlrytQ",
+      "studioId": "1",
+      "jadwal": [
+        12,
+        16
+      ],
+      "id": 2
+    },
+    {
+      "title": "The Godfather",
+      "image": "https://i.pinimg.com/564x/89/94/67/899467a693d2d4aa3c06dacd5b36bece.jpg",
+      "sinopsis": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "sutradara": "Francis Ford Coppola",
+      "genre": "Crime",
+      "durasi": "123",
+      "trailer": "https://www.youtube.com/embed/sY1S34973zA",
+      "studioId": "1",
+      "jadwal": [
+        12,
+        16
+      ],
+      "id": 3
+    },
+    {
+      "title": "Interstellar",
+      "image": "https://i.pinimg.com/564x/d9/6f/12/d96f125826da198356c1216f94b4eeca.jpg",
+      "sinopsis": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      "sutradara": "Christopher Nolan",
+      "genre": "Sci-fi",
+      "durasi": "123",
+      "trailer": "https://www.youtube.com/embed/Lm8p5rlrSkY",
+      "studioId": "1",
+      "jadwal": [
+        12,
+        16
+      ],
+      "id": 4
+    },
+    {
+      "title": "Harry Potter",
+      "image": "https://i.pinimg.com/564x/46/f2/75/46f27584b186b308f49a575184e29531.jpg",
+      "sinopsis": "As Harry (Daniel Radcliffe), Ron (Rupert Grint), and Hermione (Emma Watson) race against time and evil to destroy the Horcruxes, they uncover the existence of the three most powerful objects in the wizarding world: the Deathly Hallows.",
+      "sutradara": "David Yates",
+      "genre": "Fantasy",
+      "durasi": "123",
+      "trailer": "https://www.youtube.com/embed/MxqsmsA8y5k",
+      "studioId": "1",
+      "jadwal": [
+        12,
+        16
+      ],
+      "id": 5
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 2,
+      "movieId": 3,
+      "jadwal": 12,
+      "totalHarga": 50000,
+      "bayar": false
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "movieId": 3,
+      "jadwal": 12,
+      "totalHarga": 70000,
+      "bayar": false
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "movieId": 3,
+      "jadwal": 14,
+      "totalHarga": 50000,
+      "bayar": false
+    },
+    {
+      "movieId": 2,
+      "totalharga": 75000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 4
+    },
+    {
+      "movieId": 2,
+      "totalharga": 150000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 5
+    },
+    {
+      "movieId": 3,
+      "totalharga": 375000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 6
+    }
+  ],
+  "ordersDetails": [
+    {
+      "id": 1,
+      "orderId": 1,
+      "row": 2,
+      "seat": 4
+    },
+    {
+      "id": 2,
+      "orderId": 1,
+      "row": 2,
+      "seat": 5
+    },
+    {
+      "id": 3,
+      "orderId": 2,
+      "row": 2,
+      "seat": 6
+    },
+    {
+      "id": 4,
+      "orderId": 2,
+      "row": 2,
+      "seat": 7
+    },
+    {
+      "id": 5,
+      "orderId": 3,
+      "row": 2,
+      "seat": 8
+    },
+    {
+      "id": 6,
+      "orderId": 3,
+      "row": 2,
+      "seat": 9
+    },
+    {
+      "orderId": 4,
+      "seat": 10,
+      "row": 2,
+      "id": 7
+    },
+    {
+      "orderId": 5,
+      "seat": 8,
+      "row": 2,
+      "id": 8
+    },
+    {
+      "orderId": 5,
+      "seat": 9,
+      "row": 2,
+      "id": 9
+    },
+    {
+      "orderId": 6,
+      "seat": 10,
+      "row": 6,
+      "id": 10
+    },
+    {
+      "orderId": 6,
+      "seat": 11,
+      "row": 6,
+      "id": 11
+    },
+    {
+      "orderId": 6,
+      "seat": 12,
+      "row": 6,
+      "id": 12
+    },
+    {
+      "orderId": 6,
+      "seat": 13,
+      "row": 6,
+      "id": 13
+    },
+    {
+      "orderId": 6,
+      "seat": 9,
+      "row": 6,
+      "id": 14
+    }
+  ]
 }

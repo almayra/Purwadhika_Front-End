@@ -16,7 +16,7 @@ const CarouselPage = () => {
           <div>
           <h4>Put on a Happy Face.</h4>
           <h1>JOKER : THE KILLING JOKE</h1>
-          <p style={{color:'gray'}}>Coming Soon</p>
+          <p style={{color:'gray'}}>COMING SOON</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -30,7 +30,7 @@ const CarouselPage = () => {
         <Carousel.Caption>
           <h4>Collide with Destiny. Nothing on Earth could come between them.</h4>
           <h1>TITANIC II</h1>
-          <p style={{color:'gray'}}>Coming Soon</p>
+          <p style={{color:'gray'}}>COMING SOON</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item style={{height:'600px'}}>
@@ -43,7 +43,7 @@ const CarouselPage = () => {
         <Carousel.Caption>
           <h4>Don't. Set. Him. Off.</h4>
           <h1>JOHN WICK CHAPTER IV</h1>
-          <p style={{color:'gray'}}>Coming Soon</p>
+          <p style={{color:'gray'}}>COMING SOON</p>
         </Carousel.Caption>
       </Carousel.Item>
 </Carousel>
