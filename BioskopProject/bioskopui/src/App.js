@@ -8,14 +8,21 @@ import SlideMovies from './components/slider';
 import Login from './pages/login'
 import MovieDetail from './pages/moviedetail';
 import {connect} from 'react-redux'
-import {LoginSuccessAction} from './redux/action'
+import {LoginSuccessAction,CartAction} from './redux/action' //tandanya kek balok
 import Belitiket from './pages/belitiket';
 import Axios from 'axios';
 import { APIURL } from './support/ApiURL';
+import Regis from './pages/regis'
+import Cart from './pages/cart';
+import History from './pages/history'
+import Notfound from './pages/notfound'
+import ChangePass from './pages/changepass'
+import Studio from './pages/studio';
 
 class App extends Component{
   state={
-    loading: true
+    loading: true,
+    datacart:[]
   }
 
   componentDidMount(){
@@ -24,42 +31,57 @@ class App extends Component{
     .then(res=>{
       console.log(res.data)
       this.props.LoginSuccessAction(res.data)
+      Axios.get(`${APIURL}orders?_expand=movie&userId=${id}&bayar=false`) //id diambil dr local storage
+      .then((res1)=>{
+        var datacart=res1.data
+        this.setState({datacart:datacart,loading:false})
+      })
     }).catch(err=>{
       console.log(err)
+    }).finally(()=>{
+      this.setState({loading:false})
     })
-    this.setState({loading:false})
   }
   
   render() {
-  if(this.state.loading){
-    return <div>loading</div>
-  }else{
-    
-    return (
-      <div className="App">
-      <Header/>
-      <Switch>
-        <Route path={'/'} exact>
-          <SlideMovies/> 
-          <Home/>
-        </Route>
-        <Route exact path={'/admin'}>
-          <ManageAdmin/>
-        </Route>
-        <Route path='/moviedetail/:id' component={MovieDetail} exact/>
-        <Route path='/belitiket' component={Belitiket} exact />
-        <Route path={'/login'} exact component={Login} />
-      </Switch>
-    </div>
-  );
-}
-}
+    if(this.state.loading){
+      return <div>loading</div>
+    }
+    this.props.CartAction(this.state.datacart.length)
+      return (
+        <div className="App">
+          <Header/>
+          <Switch>
+            <Route path={'/'} exact>
+              <SlideMovies/> 
+              <Home/>
+            </Route>
+            <Route exact path={'/admin'}>
+              <ManageAdmin/>
+            </Route>
+            <Route path='/moviedetail/:id' component={MovieDetail} exact/>
+            <Route path='/belitiket' component={Belitiket} exact />
+            <Route path='/cart' exact component={Cart} />
+            <Route path={'/login'} exact component={Login} />
+            <Route path={'/regis'} exact component={Regis} />
+            <Route path={'/history'} exact component={History} />
+            <Route path={'/studio'} exact component={Studio}/>
+            <Route path={'/history'} exact component={History} />
+            <Route path={'/changepass'} exact component={ChangePass} />
+            <Route path={'/*'} exact component={Notfound} />
+            <Route exact path="/404" component={Notfound}/>
+          </Switch>
+        </div>
+      );
+    }
+  
 }
 
 const MapStateToProps=(state)=>{
   return{
-    Authlog:state.Auth.login
+    Authlog:state.Auth.login,
+    NotifCart:state.Auth.cart
   }
 }
 
-export default connect(MapStateToProps,{LoginSuccessAction})(App);
+export default connect(MapStateToProps,{LoginSuccessAction,CartAction})(App);

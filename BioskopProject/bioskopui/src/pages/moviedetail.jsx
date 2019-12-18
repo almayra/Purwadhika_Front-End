@@ -4,6 +4,7 @@ import { APIURL } from '../support/ApiURL'
 import { Modal,ModalBody,ModalFooter } from 'reactstrap'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {MdAccessTime} from 'react-icons/md'
 
 class MovieDetail extends Component {
     state={ 
@@ -48,21 +49,22 @@ class MovieDetail extends Component {
                     </ModalBody>
                 </Modal>
                 <Modal isOpen={this.state.notloginyet} centered toggle={()=>this.setState({notloginyet:false})}>
-                    <ModalBody style={{fontFamily:'Lucida Sans', fontWeight:'bold', fontSize:'20px'}}>
-                        You have not login
+                    <ModalBody style={{fontFamily:'Lucida Sans', fontWeight:'bold', fontSize:'20px', textAlign:'center'}}>
+                        You have to login first
                     </ModalBody>
                     <ModalFooter>
                         <button onClick={()=>this.setState({kelogin:true})} className='btn btn-primary'>Okay</button>
                     </ModalFooter>
                 </Modal>
-                <div className='row' style={{height:'92vh'}}>
-                    <div class="card text-white bg-secondary mr-auto" style={{width:'50rem'}}>
+                <div className='row' style={{height:'93vh'}}>
+                    <div class="card text-white bg-dark mr-auto" style={{width:'50rem'}}>
                         <div class="card-body" style={{height:'92vh'}}>
-                            <h5 class="card-title"> {this.state.datadetailfim.title} </h5>
-                            <h6 class="card-subtitle mb-2 text-muted"> {this.state.datadetailfim.sutradara} </h6>
+                            <h1 class="card-title"> {this.state.datadetailfim.title} </h1>
+                            <h6 class="card-subtitle mt-2" style={{color:'#D3D3D3'}}>by {this.state.datadetailfim.sutradara} </h6>
+                            <h6 class="card-subtitle mt-2 mb-5" style={{color:'#CCCCCC'}}><MdAccessTime/> {this.state.datadetailfim.durasi} minutes </h6>
                             <p class="card-text"> {this.state.datadetailfim.sinopsis} </p>
                             <button className='mt-3 mr-4 btn btn-primary' onClick={this.onBeliTicketClick} >Get Ticket</button>
-                            <button className='mt-3 btn btn-dark' onClick={()=>this.setState({traileropen:true})} >Trailer</button>
+                            <button className='mt-3 btn btn-outline-info' onClick={()=>this.setState({traileropen:true})} >Trailer</button>
                         </div>
                     </div>
                 </div>

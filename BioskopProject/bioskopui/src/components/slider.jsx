@@ -6,9 +6,9 @@ import {Carousel} from 'react-bootstrap'
 const CarouselPage = () => {
     return (
       <Carousel>
-      <Carousel.Item style={{height:'600px'}}>
-        <img className='img'
-          className="d-block w-100"
+      <Carousel.Item style={{height:'500px'}}>
+        <img
+          className="d-block w-100 joker"
           src={MOVIE}
           alt="First slide"
         />
@@ -20,7 +20,7 @@ const CarouselPage = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item style={{height:'600px'}}>
+      <Carousel.Item style={{height:'500px'}}>
         <img
           className="d-block w-100"
           src={MOVIE2}
@@ -33,7 +33,7 @@ const CarouselPage = () => {
           <p style={{color:'gray'}}>COMING SOON</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item style={{height:'600px'}}>
+      <Carousel.Item style={{height:'500px'}}>
         <img
           className="d-block w-100"
           src={MOVIE1}

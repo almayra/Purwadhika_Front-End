@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import {Link} from 'react-router-dom'
+// import {Search} from 'semantic-ui-react'
 
 const url='http://localhost:2000/'
 
@@ -44,6 +45,10 @@ class Home extends Component {
     render() {
         return (
             <div className='mx-5'>
+                {/* <div>
+                    <input className='form-control mt-3 mx-auto' style={{width:'60%'}} placeholder='Search Movies'></input>
+                </div> */}
+                
                 <div className="row py-5" style={{paddingLeft: '10px', paddingRight:'10px'}}>
                     {this.renderMovies()}
                 </div>      

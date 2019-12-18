@@ -1,11 +1,13 @@
 const INITIAL_STATE={
-    id:'',
+    id:0,
     username:'',
     password:'',
     login:false,
     error:'',
     loading:false,
-    role:''
+    role:'',
+    cart:0,
+    totalharga:0
 }
 
 export default(state=INITIAL_STATE,action)=>{
@@ -16,6 +18,12 @@ export default(state=INITIAL_STATE,action)=>{
             return {...state,loading:true,error:''}
         case 'LOGIN_ERROR':
             return {...state,error:action.payload,loading:false}
+        case 'NOTIF_CART':
+            return {...state,cart:action.payload}
+        case 'CHANGE_PASS':
+            return {...state,...action.payload}
+        case 'TOTAL_HARGA':
+            return {...state,totalharga:action.payload}
         default:
             return state;
     }

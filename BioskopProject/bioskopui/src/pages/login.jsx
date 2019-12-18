@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {Link,Redirect} from 'react-router-dom'
-import Axios from 'axios'
-import {APIURL} from '../support/ApiURL'
 import {connect} from 'react-redux'
 import {LoginSuccessAction,Loginthunk,Login_error} from './../redux/action'
 import Loader from 'react-loader-spinner'
@@ -16,19 +14,10 @@ class Login extends Component{
         var username=this.refs.username.value 
         var password=this.refs.password.value
         this.props.Loginthunk(username,password)
-        // Axios.get(`${APIURL}users?username=${username}&password=${password}`)
-        // .then(res=>{
-        //     if(res.data.length){
-        //         localStorage.setItem('aya',res.data[0].id)
-        //         this.props.LoginSuccessAction(res.data[0])
-        //     }else{
-        //         this.setState({error:'Password is incorrect'})
-        //     }
-        //     this.setState({loading:false})
-        // }).catch((err)=>{
-        //     console.log(err)
-        //     this.setState({loading:true})
-        // })
+    }
+    
+    tohome=()=>{
+        window.location.reload()
     }
     
     render() {
@@ -65,20 +54,14 @@ class Login extends Component{
                 }
                 <div className='mt-4'>
                     {this.props.Auth.loading?
-                    <Loader
-                        type="hearts"
-                        color="black"
-                        height={100}
-                        width={100}
-                        timeout={9000}
-                    />
+                        <Loader type="Hearts" color="pink" height={100} width={100} />
                     :
                     <button className='btn btn-primary' onClick={this.onLoginClick}>Login</button>
+                    
                     }
                 </div>
-                <label className="custom-control-label mt-3" htmlFor="customCheck1" style={{color:'white'}}>Remember me</label>
                 <p className="register mt-5" style={{color:'white'}}>
-                    Doesn't have an account? <Link style={{color:'pink'}} to=''>Register now.</Link>
+                    Doesn't have an account? <Link style={{color:'pink'}} to='/regis'>Register now.</Link>
                 </p>
                 </center>
             // </form>

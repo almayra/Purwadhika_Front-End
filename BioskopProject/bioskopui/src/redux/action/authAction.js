@@ -8,6 +8,33 @@ export const LoginSuccessAction=(datauser)=>{
     }
 }
 
+export const LogoutSuccessAction=()=>{
+    return{
+        type:'LOGOUT_SUCCESS'
+    }
+}
+
+export const CartAction=(cart)=>{
+    return{
+        type:'NOTIF_CART',
+        payload:cart
+    }
+}
+
+export const gantiPassword=(newpass)=>{
+    return{
+        type:'CHANGE_PASS',
+        payload:newpass
+    }
+}
+
+export const totalHargaACtion=(price)=>{
+    return{
+        type:'TOTAL_HARGA',
+        payload:price
+    }
+}
+
 export const Loginthunk=(username,password)=>{
     return(dispatch)=>{
         dispatch({type:'LOGIN_LOADING'})
@@ -17,7 +44,7 @@ export const Loginthunk=(username,password)=>{
                 localStorage.setItem('aya',res.data[0].id)
                 dispatch(LoginSuccessAction(res.data[0]))
             }else{
-                dispatch({type:'LOGIN_ERROR',payload:'Password is incorrect'})
+                dispatch({type:'LOGIN_ERROR',payload:'Password/Username is incorrect'})
             }
         }).catch((err)=>{
             console.log(err)

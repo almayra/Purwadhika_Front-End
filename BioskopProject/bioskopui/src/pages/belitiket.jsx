@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { APIURL } from '../support/ApiURL'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Modal,ModalBody,ModalFooter} from 'reactstrap'
 import Numeral from 'numeral'
@@ -90,6 +90,7 @@ export class Belitiket extends Component {
             jadwal,
             bayar
         }
+        console.log(dataorders)
         Axios.post(`${APIURL}orders`,dataorders)
         .then((res)=>{
             console.log(res.data.id)
@@ -122,7 +123,7 @@ export class Belitiket extends Component {
         var jumlahtiket=this.state.pilihan.length
         var harga=jumlahtiket*75000
         return(
-            <div>
+            <div style={{color:'white'}}>
                 {jumlahtiket}  tiket X {'IDR '+Numeral(75000).format('0,0.00')} = {'IDR '+Numeral(harga).format('0,0.00')}
             </div>
         )
@@ -202,27 +203,40 @@ export class Belitiket extends Component {
         })
     }
 
+    tohome=()=>{
+        window.location.reload()
+    }
+
     render() {
+        if(this.props.Auth.id===''){
+            return <Redirect to='/'/>
+        }
+        if(this.props.Auth.role!=='user'){
+            return <Redirect to='/notfound'/>
+        }
         if(this.props.location.state&&this.props.AuthLog){
             if(this.state.redirecthome){
-                return <Redirect to={'/'}/>
+                return <Redirect to={'/cart'}/>
             }
             return (
                 <div>
                     <Modal isOpen={this.state.openmodalcart} >
-                        <ModalBody style={{fontWeight:'bold', fontSize:'30px'}}>
-                            Cart berhasil ditambah!
+                        <ModalBody className='mt-5 mb-5' style={{fontWeight:'bold', fontSize:'20px',textAlign:'center'}}>
+                            Successfully added to your cart
                         </ModalBody>
                         <ModalFooter>
-                            <button onClick={()=>this.setState({redirecthome:true})} className='btn btn-info'>Horaay</button>
+                            <button onClick={this.tohome} className='btn btn-info'>Horaay</button>
                         </ModalFooter>
                     </Modal>
                     <center className='mt-1'>
                         {this.state.loading?null:this.renderbutton()}
                     <div>
                         {this.state.pilihan.length?(
-                            <button onClick={this.onOrderClick} className='btn btn-dark mt-3 mb-3'>Order</button>
-                            ):null}
+                            <div>
+                                <button onClick={this.onOrderClick} className='btn btn-dark mt-3 mr-3 mb-3'>Order</button>
+                                <button onClick={()=>this.setState({pilihan:[]})} className='btn btn-danger mt-3 mb-3'>Clear</button>
+                            </div>
+                        ):null}
                         </div>
                         {this.state.pilihan.length?
                             this.renderHargadanQuantity()
@@ -241,14 +255,15 @@ export class Belitiket extends Component {
                 </div>
             )
         }
-        return <div>404 not found</div>
     }
 }
+
 
 const MapStateToProps=state=>{
     return{
         AuthLog:state.Auth.login,
-        UserId:state.Auth.Id
+        UserId:state.Auth.id,
+        Auth:state.Auth
     }
 }
 

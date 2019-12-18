@@ -108,6 +108,7 @@ export class Cart extends Component {
     }
 
     render() {
+        this.props.totalHargaACtion(this.state.totalharga)
         if(this.props.Auth.id===''){
             return <Redirect to='/' />
         }
@@ -177,7 +178,7 @@ export class Cart extends Component {
                             <Button size='medium' animated='vertical' className='mt-3'>
                                 <Button.Content hidden onClick={()=>this.setState({modalcheckout:true})} >Checkout</Button.Content>
                                 <Button.Content visible>
-                                    Total : {'IDR '+Numeral(this.state.totalharga).format('0,0.00')}
+                                    Total : {'IDR '+Numeral(this.props.totalharga).format('0,0.00')}
                                 </Button.Content>
                             </Button>
                     </center>
@@ -198,4 +199,4 @@ const MapStateToProps=(state)=>{
     }
 }
 
-export default connect(MapStateToProps)(Cart)
+export default connect(MapStateToProps,{totalHargaACtion})(Cart)

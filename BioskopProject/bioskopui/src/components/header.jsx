@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import {
   Collapse,
   Navbar,
@@ -14,68 +14,116 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
+import { LogoutSuccessAction } from '../redux/action';
+import {IoIosCart} from 'react-icons/io'
+import {MdAccountCircle} from 'react-icons/md'
+import {FiLogOut} from 'react-icons/fi'
 
+const logOutUser=()=>{
+  localStorage.clear()
+  LogoutSuccessAction()
+}
 
 class Header extends Component {
-  // const [isOpen, setIsOpen] = useState(false);
-  state = {  
-    isOpen: false,
-  }
-  // const toggle = () => setIsOpen(!isOpen);
-  
+  state = {  }
   render(){
     const {isOpen, setIsOpen} = this.state
     const toggle = () => setIsOpen(!isOpen);
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/" style={{fontWeight:'bold'}}>Milo-vies🤍</NavbarBrand>
+        <NavbarBrand href="/" style={{fontWeight:'bolder'}}>MI M♡VIE</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
-          {console.log(this.props.role)}
+
+          {/* {console.log(this.props.role)} */}
             {this.props.role===''?
+            (
+              <div>
+                  <DropdownToggle className='mr-3'>
+                    <Link to={'/login'} style={{color:'white', textDecoration:'none', fontFamily:'Lucida Sans'}}>
+                    Login
+                    </Link>
+                  </DropdownToggle>
+                  <DropdownToggle>
+                    <Link to={'/regis'} style={{color:'white', textDecoration:'none', fontFamily:'Lucida Sans'}}>
+                    Register
+                    </Link>
+                  </DropdownToggle>
+                </div>
+              )
+              :
+              null
+            }
+
+            {  
+              this.props.username===''? null : this.props.role==='admin'?
               (
-                <DropdownToggle>
-                  <Link to={'/login'} style={{color:'white', textDecoration:'none', fontFamily:'Lucida Sans'}}>
-                  Login
-                  </Link>
-                </DropdownToggle>
-              ):this.props.role==='admin'?
-              (
-                <div>
-                <NavItem>
-                  <NavLink href="/admin" className='mt-2 mr-3'>Manage Admin</NavLink>
-                </NavItem>
+                <div className='d-flex'>
+                  <NavItem>
+                    <NavLink style={{color:'white'}} href="/admin" className='mt-2 mr-3'>Manage Admin</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink style={{color:'white'}} href="/studio" className='mt-2 mr-3'>Manage Studio</NavLink>
+                  </NavItem>
                   <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
+                    <DropdownToggle nav caret className='mt-2' style={{fontFamily:'Lucida Sans',fontSize:'16px',color:'white'}}>
+                    <MdAccountCircle className='mr-1' style={{color:'white', fontSize:'28px'}}/>
                       {this.props.username}
                     </DropdownToggle>
                     <DropdownMenu right>
+                      <DropdownItem>
+                          <NavLink href="/changepass" style={{color:'#292b2e'}}> Change Password </NavLink>
+                        </DropdownItem>
                       <DropdownItem divider />
                       <DropdownItem>
-                        Logout
+                        <NavLink href="/" onClick={()=>logOutUser()} style={{color:'white'}} className="btn btn-dark"><FiLogOut className='mr-2'/>Logout</NavLink>
                       </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </div>
-              ):(
-                <NavItem>
-                  <NavLink href="/components/" className='mt-2 mr-3'>History</NavLink>
-                  <NavLink href="https://github.com/reactstrap/reactstrap" className='mt-2 mr-3'>Payment</NavLink>
-                  <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                      {this.props.username}
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem divider />
-                      <DropdownItem>
-                        Logout
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </NavItem>
               )
+              : 
+              this.props.role==='user'?
+              (
+                <div className='d-flex'>
+                  <NavItem>
+                    <NavLink href="/history" style={{color:'white',fontFamily:'Lucida Sans',fontSize:'16px'}} className='mt-2 mr-3'>History</NavLink>
+                  </NavItem>
+                  <NavItem className='mt-3 mr-1' style={{color:'white',fontWeight:'bolder'}}>
+                    {this.props.NotifCart}
+                  </NavItem>
+                  <NavItem>
+                    <Link to={'/cart'}><IoIosCart className='mr-3' style={{color:'white', fontSize:'28px',marginTop:'24%'}}/></Link>
+                  </NavItem>
+                  <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav className='mt-2' style={{fontFamily:'Lucida Sans',fontSize:'16px',color:'white'}}>
+                        Wish List
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem>
+                          <NavLink style={{color:'#292b2e'}}> This feature is currently unavailable </NavLink>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret className='mt-1' style={{fontFamily:'Lucida Sans',fontSize:'16px',color:'white'}}>
+                        <MdAccountCircle className='mr-1' style={{color:'white', fontSize:'28px'}}/>
+                        {this.props.username}
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem>
+                          <NavLink href="/changepass" style={{color:'#292b2e'}}> Change Password </NavLink>
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>
+                          <NavLink href="/" onClick={()=>logOutUser()} style={{color:'white'}} className="btn btn-dark"><FiLogOut className='mr-2'/> Logout</NavLink>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                </div>
+              ): null
             }
           </Nav>
         </Collapse>
@@ -86,11 +134,12 @@ class Header extends Component {
 }
 
 const MapStateToProps=state=>{
-  {console.log(state.Auth.role)}
+  // {console.log(state.Auth.role)}
   return{
     Authname: state.Auth.username,
     role: state.Auth.role,
     username: state.Auth.username,
+    NotifCart:state.Auth.cart
   }
 }
 
