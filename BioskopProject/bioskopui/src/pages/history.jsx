@@ -1,27 +1,32 @@
 import React, { Component } from 'react'
 import {Table} from 'reactstrap'
+import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 import Axios from 'axios'
 import { APIURL } from '../support/ApiURL'
 
 class History extends Component {
-    state={
-        datacart:null
-    }
 
-    // componentDidMount(){
-    //     Axios.put(`${APIURL}transactions`)
-    //     .then((res)=>{
-    //         var datacart=res.data
-    //         var htrarr=[]
-    //         res.data.forEach(element=>{
-    //             htrarr.push(Axios.get())
-    //         })
-    //     })
-    // }
+    getCurrentDate(separator=''){
+
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        
+        return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+        }
 
     render() {
-        return (
-            <div>
+        if(this.props.Auth.id===''){
+            return <Redirect to='/' />
+        }
+        if(this.props.Auth.role!=='user'){
+            return <Redirect to='/notfound'/>
+        }
+        if(this.props.userId){
+            return (
+                <div>
                 <center className='center'>
                     <Table className='mt-3' style={{width:600,color:'white'}}>
                         <thead>
@@ -33,11 +38,25 @@ class History extends Component {
                                 <th style={{width:100,color:'white'}}>Detail</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {this.props.getCurrentDate}
+                        </tbody>
                     </Table>
                 </center>
             </div>
         )
     }
+    }
 }
 
-export default History
+const MapStateToProps=(state)=>{
+    return{
+        AuthLog:state.Auth.login,
+        userId:state.Auth.id,
+        totalharga: state.Auth.totalharga,
+        Auth:state.Auth
+    }
+}
+
+export default connect(MapStateToProps)(History)
+

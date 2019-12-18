@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {Table,Modal,ModalHeader,ModalBody, ModalFooter} from 'reactstrap'
 import {APIURL} from './../support/ApiURL'
 import {Button} from 'semantic-ui-react'
-import {totalHargaACtion} from '../redux/action'
 import Numeral from 'numeral'
 import {Redirect} from 'react-router-dom'
 

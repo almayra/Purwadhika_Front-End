@@ -26,7 +26,6 @@ export class Belitiket extends Component {
     }
 
     onJamChange=()=>{
-        console.log(this.props.location.studioId)
         var studioId=this.props.location.state.studioId
         var movieId=this.props.location.state.id
         Axios.get(`${APIURL}studios/${studioId}`)
